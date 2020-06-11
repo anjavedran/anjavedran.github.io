@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Parisienne&display=swap" rel="stylesheet">
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-image: url('rings-bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .frosted-glass {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 62vw;
+            padding: 3em 1.5em;
+            text-align: center;
+            box-shadow: 0 0.3px 0.7px rgba(0, 0, 0, 0.126),
+                0 0.9px 1.7px rgba(0, 0, 0, 0.179), 0 1.8px 3.5px rgba(0, 0, 0, 0.224),
+                0 3.7px 7.3px rgba(0, 0, 0, 0.277), 0 10px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            transition: 0.5s ease;
+        }
+
+        .frosted-glass:hover {
+            box-shadow: 0 0.7px 1px rgba(0, 0, 0, 0.157),
+            0 1.7px 2.6px rgba(0, 0, 0, 0.224), 0 3.5px 5.3px rgba(0, 0, 0, 0.28),
+            0 7.3px 11px rgba(0, 0, 0, 0.346), 0 20px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .title {
+            font-family: 'Parisienne', cursive;
+            font-size: 3.2em;
+            color: white;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        p {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+
+        li {
+            display: inline-block;
+            font-size: 1em;
+            list-style-type: none;
+            padding: 1em;
+            text-transform: uppercase;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        li span {
+            display: block;
+            font-size: 2.5rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="frosted-glass">
+        <h1 class="title">Anja & Vedran</h1>
+        <p>Hvala na lijepim zajedničkim trenucima!</p>
+        <div class="container">
+            <p>Vratite se kroz koji dan za pristup slikama.</p>
+            <!-- <ul>
+              <li><span id="days"></span>days</li>
+              <li><span id="hours"></span>Hours</li>
+              <li><span id="minutes"></span>Minutes</li>
+              <li><span id="seconds"></span>Seconds</li>
+            </ul> -->
+          </div>
+    </div>
+    <script>
+        const second = 1000,
+            minute = second * 60,
+            hour = minute * 60,
+            day = hour * 24;
+
+        let countDown = new Date('Jun 30, 2020 00:00:00').getTime(),
+            x = setInterval(function() {
+
+            let now = new Date().getTime(),
+                distance = countDown - now;
+
+            document.getElementById('days').innerText = Math.floor(distance / (day)),
+                document.getElementById('hours').innerText = Math.floor((distance % (day)) / (hour)),
+                document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute)),
+                document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
+
+            // kad odbroji
+            //if (distance < 0) {
+            //  clearInterval(x);
+            //}
+
+            }, second)
+    </script>
+</body>
+</html>
